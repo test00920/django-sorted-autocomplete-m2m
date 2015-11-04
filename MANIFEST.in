@@ -1,2 +1,2 @@
-recursive-include sorted-autocomplete-m2m/static *
-recursive-include sorted-autocomplete-m2m/templates *
+recursive-include sorted_autocomplete_m2m/static *
+recursive-include sorted_autocomplete_m2m/templates *
