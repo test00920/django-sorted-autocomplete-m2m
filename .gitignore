@@ -4,3 +4,5 @@
 .DS_Store
 .idea
 .coverage
+todo.txt
+*.egg-info

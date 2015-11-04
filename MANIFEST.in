@@ -1,3 +1,2 @@
-recursive-include quickmap *
-recursive-include quickmap/static *
-recursive-include quickmap/templates *
+recursive-include sorted-autocomplete-m2m/static *
+recursive-include sorted-autocomplete-m2m/templates *
