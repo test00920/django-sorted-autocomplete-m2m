@@ -1,0 +1,19 @@
+{% load i18n static %}
+<div class="sorted-autocomplete-m2m" data-name="{{ name }}">
+    <p>
+        <input data-autocomplete-url="{{ autocomplete_url }}" type="text"
+               placeholder="{% trans "Filter" %}"/>
+    </p>
+    <div class="autocomplete-results-container">
+        <ul class="autocomplete-results"></ul>
+    </div>
+    <div class="sortedm2m-container">
+        <ul class="sortedm2m-results">
+            {% for row in selected %}
+                <li><label{{ row.label_for|safe }}>{{ row.rendered_cb }} {{ row.option_label }}</label></li>{% endfor %}
+            {% for row in unselected %}
+                <li><label{{ row.label_for|safe }}>{{ row.rendered_cb }} {{ row.option_label }}</label></li>{% endfor %}
+        </ul>
+        <p class="help">{% trans "Choose items and order by drag & drop." %}</p>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.autocomplete-results-container {
+    position: absolute;
+    background-color: #DDD;
+    border: solid 1px black;
+    display: none;
+}
+.autocomplete-results-container ul {
+    list-style-type: none;
+    padding: 0 10px;
+}
+.autocomplete-results-container ul li {
+    cursor: pointer;
+}
+.autocomplete-results-container ul li:hover {
+    background-color: yellow;
+}

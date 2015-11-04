@@ -1,0 +1,3 @@
+recursive-include quickmap *
+recursive-include quickmap/static *
+recursive-include quickmap/templates *
