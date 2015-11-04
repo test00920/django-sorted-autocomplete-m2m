@@ -8,6 +8,7 @@ Django Sorted Autocomplete M2M
 **TODO:**
     - Add layer around autocomplete dropdown to close it.
     - Make installation documentation.
+    - Hide autocomplete dropdown when empty.
 
 ----
 
