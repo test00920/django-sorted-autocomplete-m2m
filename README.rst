@@ -1,20 +1,21 @@
-Django Sorted Autocomplete ManyToMany
-=====================================
+Django Sorted Autocomplete M2M
+==============================
 **Description:**
     Demo will be available shortly.
 
-====
+----
 
 **TODO:**
     - Add layer around autocomplete dropdown to close it.
+    - Make installation documentation.
 
-====
+----
 
 **Changelog:**
     - v1.0.0: 
         Packaged version. You're welcome.
 
-====
+----
 
 **About us:**
-    We are **Nixa inc**. Visit us at http://nixa.io/
+    We are **Nixa inc**. Visit us at https://nixa.ca/
