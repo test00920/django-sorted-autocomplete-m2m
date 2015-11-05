@@ -13,7 +13,7 @@ Django Sorted Autocomplete M2M
 ----
 
 **Changelog:**
-    - v1.0.3:
+    - v1.0.4:
         Packaged version. You're welcome.
 
 ----
