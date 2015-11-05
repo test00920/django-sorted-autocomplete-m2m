@@ -14,13 +14,13 @@ __author__ = 'snake'
 class SuperSortWidget(SortedCheckboxSelectMultiple):
     class Media:
         js = (
-            'super-sort/js/m2m.js',
             'sortedm2m/widget.js',
             'sortedm2m/jquery-ui.js',
+            'sorted-autocomplete-m2m/js/m2m.js',
         )
         css = {'screen': (
             'sortedm2m/widget.css',
-            'super-sort/css/m2m.css',
+            'sorted-autocomplete-m2m/css/m2m.css',
         )}
 
     def __init__(self, url_name, **kwargs):
