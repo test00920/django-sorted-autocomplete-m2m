@@ -14,7 +14,6 @@ __author__ = 'snake'
 class SuperSortWidget(SortedCheckboxSelectMultiple):
     class Media:
         js = (
-            'sortedm2m/widget.js',
             'sortedm2m/jquery-ui.js',
             'sorted-autocomplete-m2m/js/m2m.js',
         )
@@ -28,7 +27,10 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
         self.autocomplete_url = reverse_lazy(url_name)
 
     def filter_unselected_choices(self, value):
-        self.choices.queryset = self.choices.queryset.filter(pk__in=value)
+        if value is None:
+            self.choices.queryset = self.choices.queryset.none()
+        else:
+            self.choices.queryset = self.choices.queryset.filter(pk__in=value)
 
     def render(self, name, value, attrs=None, choices=()):
         self.filter_unselected_choices(value)
