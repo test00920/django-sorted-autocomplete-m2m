@@ -35,13 +35,13 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
     def render(self, name, value, attrs=None, choices=()):
         self.filter_unselected_choices(value)
         selected, unselected = self._render(name, value, attrs, choices)
-        return get_template('sorted-autocomplete-m2m/m2m.html').render(Context({
+        return get_template('sorted-autocomplete-m2m/m2m.html').render({
             'autocomplete_id': '%s_autocomplete' % attrs['id'],
             'autocomplete_url': self.autocomplete_url,
             'selected': selected,
             'unselected': unselected,
             'name': name,
-        }))
+        })
 
     @property
     def media(self):
