@@ -1,6 +1,6 @@
 from itertools import chain
 from django import forms
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.forms import Media
 from django.template import Context
 from django.template.loader import get_template
