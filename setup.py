@@ -4,7 +4,7 @@ from setuptools import setup
 setup(
     name='django-sorted-autocomplete-m2m',
     packages=['sorted_autocomplete_m2m'],
-    version='1.0.6',
+    version='1.0.7',
     author='Simon Lessnick',
     author_email='simon@nixa.ca',
     license='MIT',
