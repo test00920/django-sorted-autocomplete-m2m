@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.forms import Media
 from django.template import Context
 from django.template.loader import get_template
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from sortedm2m.forms import SortedMultipleChoiceField, SortedCheckboxSelectMultiple
 
@@ -61,7 +61,7 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
         final_attrs = self.build_attrs(attrs, name=name)
 
         # Normalize to strings
-        str_values = [force_text(v) for v in value]
+        str_values = [force_str(v) for v in value]
 
         selected = []
         unselected = []
@@ -76,9 +76,9 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
                 label_for = ''
 
             cb = forms.CheckboxInput(final_attrs, check_test=lambda v: v in str_values)
-            option_value = force_text(option_value)
+            option_value = force_str(option_value)
             rendered_cb = cb.render(name, option_value)
-            option_label = conditional_escape(force_text(option_label))
+            option_label = conditional_escape(force_str(option_label))
             item = {'label_for': label_for, 'rendered_cb': rendered_cb, 'option_label': option_label,
                     'option_value': option_value}
             if option_value in str_values:
