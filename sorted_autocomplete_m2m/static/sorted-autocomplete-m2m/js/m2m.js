@@ -185,10 +185,10 @@ if (typeof jQuery === 'undefined') {
                     '  type="checkbox" value="' + id + '"> ' + value +
                     '</label>' +
                     '</li>'
-                if (!$('#' + element_id + '_label'.find())) {
+                if (sorted_results.find(`input[value=${id}]`).length === 0) {
                     sorted_results.append(element_html)
+                    $('#' + element_id + '_label').click()
                 }
-                $('#' + element_id + '_label').click()
             }
         })
     })
