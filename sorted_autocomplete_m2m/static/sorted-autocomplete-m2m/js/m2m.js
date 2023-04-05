@@ -185,7 +185,9 @@ if (typeof jQuery === 'undefined') {
                     '  type="checkbox" value="' + id + '"> ' + value +
                     '</label>' +
                     '</li>'
-                sorted_results.append(element_html)
+                if (!$('#' + element_id + '_label'.find())) {
+                    sorted_results.append(element_html)
+                }
                 $('#' + element_id + '_label').click()
             }
         })
