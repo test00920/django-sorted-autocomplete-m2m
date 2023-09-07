@@ -1,6 +1,7 @@
 {% load i18n static %}
 <div class="sorted-autocomplete-m2m" data-name="{{ name }}">
     <p>
+        <img src="/static/sortedm2m/selector-search.gif" alt="" title="Type into this box to filter down the list.">
         <input data-autocomplete-url="{{ autocomplete_url }}" type="text"
                placeholder="{% trans "Filter" %}"/>
     </p>
