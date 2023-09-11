@@ -23,12 +23,11 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
             'sorted-autocomplete-m2m/css/m2m.css',
         )}
 
-    def __init__(self, url_name:str, query_string:dict=None, **kwargs: Any):
+    def __init__(self, url_name:str, limit:int=10, **kwargs: Any):
         super().__init__(**kwargs)
 
         self.autocomplete_url = reverse_lazy(url_name) 
-        if query_string is not None:
-            self.autocomplete_url = self.autocomplete_url + '?' + urlencode(query_string)
+        self.limit = limit
 
     def filter_unselected_choices(self, value):
         if value is None:
@@ -42,6 +41,7 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
         return get_template('sorted-autocomplete-m2m/m2m.html').render({
             'autocomplete_id': '%s_autocomplete' % attrs['id'],
             'autocomplete_url': self.autocomplete_url,
+            'limit': self.limit,
             'selected': selected,
             'unselected': unselected,
             'name': name,

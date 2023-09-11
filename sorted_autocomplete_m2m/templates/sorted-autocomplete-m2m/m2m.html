@@ -2,7 +2,7 @@
 <div class="sorted-autocomplete-m2m" data-name="{{ name }}">
     <p>
         <img src="/static/sortedm2m/selector-search.gif" alt="" title="Type into this box to filter down the list.">
-        <input data-autocomplete-url="{{ autocomplete_url }}" type="text"
+        <input data-autocomplete-url="{{ autocomplete_url }}" type="text" data-limit="{{ limit }}"
                placeholder="{% trans "Filter" %}"/>
     </p>
     <div class="autocomplete-results-container">
