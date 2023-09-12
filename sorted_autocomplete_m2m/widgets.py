@@ -2,12 +2,10 @@ from itertools import chain
 from django import forms
 from django.urls import reverse_lazy
 from django.forms import Media
-from django.template import Context
 from django.template.loader import get_template
 from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from sortedm2m.forms import SortedMultipleChoiceField, SortedCheckboxSelectMultiple
-from urllib.parse import urlencode
 from typing import Any
 __author__ = 'snake'
 
