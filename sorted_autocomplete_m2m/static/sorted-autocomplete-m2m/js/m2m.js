@@ -129,6 +129,7 @@ if (typeof jQuery === 'undefined') {
             var field_name = main_container.attr('data-name')
             var autocomplete_input = main_container.find('input[data-autocomplete-url]')
             var autocomplete_url = autocomplete_input.attr('data-autocomplete-url')
+            var limit = autocomplete_input.attr('data-limit')
             var autocomplete_results = main_container.find('.autocomplete-results')
             var autocomplete_results_container = main_container.find('.autocomplete-results-container')
             var sorted_results = main_container.find('.sortedm2m-results')
@@ -147,7 +148,7 @@ if (typeof jQuery === 'undefined') {
                 }
                 clearTimeout(ajax_timeout)
                 ajax_timeout = setTimeout(function () {
-                    $.get(autocomplete_url, {q: q}, function (result) {
+                    $.get(autocomplete_url, {q: q, limit: limit}, function (result) {
                         var choices = result['choices']
                         if (choices) {
                             autocomplete_results.html('')
