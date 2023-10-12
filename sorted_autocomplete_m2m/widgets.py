@@ -1,13 +1,12 @@
 from itertools import chain
 from django import forms
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.forms import Media
-from django.template import Context
 from django.template.loader import get_template
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from sortedm2m.forms import SortedMultipleChoiceField, SortedCheckboxSelectMultiple
-
+from typing import Any
 __author__ = 'snake'
 
 
@@ -22,9 +21,11 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
             'sorted-autocomplete-m2m/css/m2m.css',
         )}
 
-    def __init__(self, url_name, **kwargs):
+    def __init__(self, url_name:str, limit:int=10, **kwargs: Any):
         super().__init__(**kwargs)
-        self.autocomplete_url = reverse_lazy(url_name)
+
+        self.autocomplete_url = reverse_lazy(url_name) 
+        self.limit = limit
 
     def filter_unselected_choices(self, value):
         if value is None:
@@ -32,12 +33,13 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
         else:
             self.choices.queryset = self.choices.queryset.filter(pk__in=value)
 
-    def render(self, name, value, attrs=None, choices=()):
+    def render(self, name, value, attrs=None, choices=(), renderer=None):
         self.filter_unselected_choices(value)
         selected, unselected = self._render(name, value, attrs, choices)
         return get_template('sorted-autocomplete-m2m/m2m.html').render({
             'autocomplete_id': '%s_autocomplete' % attrs['id'],
             'autocomplete_url': self.autocomplete_url,
+            'limit': self.limit,
             'selected': selected,
             'unselected': unselected,
             'name': name,
@@ -61,7 +63,7 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
         final_attrs = self.build_attrs(attrs, name=name)
 
         # Normalize to strings
-        str_values = [force_text(v) for v in value]
+        str_values = [force_str(v) for v in value]
 
         selected = []
         unselected = []
@@ -76,9 +78,9 @@ class SuperSortWidget(SortedCheckboxSelectMultiple):
                 label_for = ''
 
             cb = forms.CheckboxInput(final_attrs, check_test=lambda v: v in str_values)
-            option_value = force_text(option_value)
+            option_value = force_str(option_value)
             rendered_cb = cb.render(name, option_value)
-            option_label = conditional_escape(force_text(option_label))
+            option_label = conditional_escape(force_str(option_label))
             item = {'label_for': label_for, 'rendered_cb': rendered_cb, 'option_label': option_label,
                     'option_value': option_value}
             if option_value in str_values:
